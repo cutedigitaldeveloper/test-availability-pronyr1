@@ -165,3 +165,6 @@ dist
 .env*
 !.env.example
 .wrangler/
+/.idea/modules.xml
+/.idea/test-availability-pronyr1.iml
+/.idea/vcs.xml
