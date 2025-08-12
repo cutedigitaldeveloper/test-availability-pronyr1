@@ -13,6 +13,14 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello My Worker World!!!!');
+		const responses = await Promise.all([
+			fetch("https://pt2-backend.pronyr.com/v2/vercel_ordered_seriesid_list?userid=6e54ffc8-52c8-4967-915b-d5ae57db6b50", {
+				headers: {
+					"Content-Type": "application/json",
+				}
+			})
+		]);
+		const healthCheck = responses[0].statusText;
+		return new Response(healthCheck);
 	},
 } satisfies ExportedHandler<Env>;
