@@ -5,7 +5,7 @@
 	"scripts": {
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
-		"start": "wrangler dev",
+		"start": "wrangler dev --remote --inspector-port=9229",
 		"test": "vitest",
 		"cf-typegen": "wrangler types"
 	},
