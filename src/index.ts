@@ -13,7 +13,16 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		const value = await env.KV.get("status:pt2-backend-dev");
-		return new Response(value);
+		const value = await env.KV.get("status:pt2-backend-dev2");
+		if (value === null || value === "unhealthy") {
+			return new Response("Status is unhealthy", { status: 400 });
+		}
+		return new Response("OK", { status: 200 });
 	},
+	async scheduled(event, env) {
+		const value = await env.KV.get("status:pt2-backend-dev2");
+		if (value === null || value === "unhealthy") {
+			console.log("Status is unhealthy");
+		}
+	}
 } satisfies ExportedHandler<Env>;
