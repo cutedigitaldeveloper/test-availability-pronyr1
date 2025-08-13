@@ -13,14 +13,7 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		const responses = await Promise.all([
-			fetch("https://pt2-backend.pronyr.com/v2/vercel_ordered_seriesid_list?userid=6e54ffc8-52c8-4967-915b-d5ae57db6b50", {
-				headers: {
-					"Content-Type": "application/json",
-				}
-			})
-		]);
-		const healthCheck = responses[0].statusText;
-		return new Response(healthCheck);
+		const value = await env.KV.get("status:pt2-backend-dev");
+		return new Response(value);
 	},
 } satisfies ExportedHandler<Env>;

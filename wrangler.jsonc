@@ -4,12 +4,23 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
+	"account_id": "02ce7f9cd28245301b8501ffcd81b53c",
 	"name": "test-availability-pronyr1",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-08-12",
 	"observability": {
 		"enabled": true
-	}
+	},
+	// Add this to your wrangler.jsonc
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "156c4e1175c44f3bb5c8368b4bea3508",
+
+			// Optional: preview_id used when running `wrangler dev` for local dev
+			"preview_id": "156c4e1175c44f3bb5c8368b4bea3508"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
